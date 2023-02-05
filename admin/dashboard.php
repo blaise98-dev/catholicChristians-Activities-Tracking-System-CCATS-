@@ -73,94 +73,27 @@
                                                 </div>
                                             </div>
                                             <?php
-                                            $new = mysqli_query($conn, "SELECT * 
-FROm  members
-WHERE  DATE_SUB(STR_TO_DATE(date, '%Y-%m-%d'), INTERVAL YEAR(CURDATE())-YEAR(STR_TO_DATE(date, '%Y-%m-%d')) YEAR) 
-            BETWEEN CURDATE() AND DATE_SUB(CURDATE(), INTERVAL -2 DAY)") or die(mysqli_error($conn));
-                                            $new = mysqli_num_rows($new);
-                                            ?>
+                                        $student = mysqli_query($conn, "select * from event where event.parish='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
+                                        $student = mysqli_num_rows($student);
+                                        ?>
                                             <div class="span6">
                                                 <div class="panel panel-green">
                                                     <div class="panel-heading">
                                                         <div class="container-fluid">
                                                             <div class="row-fluid">
                                                                 <div class="span3"><br />
-                                                                    <i class="fa fa-plus-circle  fa-5x" aria-hidden="true"></i><br />
-                                                                </div>
-                                                                <div class="span8 text-right"><br />
-                                                                    <div class="huge"><?php echo $new; ?></div>
-                                                                    <div>New members</div><br />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <a href="add_members.php">
-                                                        <div class="modal-footer">
-                                                            <span class="pull-left">Add member</span>
-                                                            <span class="pull-right"><i class="icon-chevron-right"></i></span>
-                                                            <div class="clearfix"></div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="page-wrapper">
-                                        <?php
-                                        $student = mysqli_query($conn, "select * from giving where giving.parish='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
-                                        $student = mysqli_num_rows($student);
-                                        ?>
-                                        <div class="row-fluid">
-                                            <div class="span6">
-                                                <div class="panel panel-yellow">
-                                                    <div class="panel-heading">
-                                                        <div class="container-fluid">
-                                                            <div class="row-fluid">
-                                                                <div class="span3"><br />
-                                                                    <i class="fa fa-money  fa-5x" aria-hidden="true"></i>
+                                                                    <i class="fa fa-calendar  fa-5x" aria-hidden="true"></i><br />
                                                                 </div>
                                                                 <div class="span8 text-right"><br />
                                                                     <div class="huge"><?php echo $student; ?></div>
-                                                                    <div>Givings</div><br />
+                                                                    <div>Events & Announcements</div><br />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <a href="giving.php">
+                                                    <a href="events.php">
                                                         <div class="modal-footer">
-                                                            <span class="pull-left">Givings</span>
-                                                            <span class="pull-right"><i class="icon-chevron-right"></i></span>
-                                                            <div class="clearfix"></div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <?php
-
-                                            $bd = mysqli_query($conn, "SELECT * 
-                                            FROm  members
-                                            WHERE  DATE_ADD(STR_TO_DATE(Birthday, '%Y-%m-%d'), INTERVAL YEAR(CURDATE())-YEAR(STR_TO_DATE(Birthday, '%Y-%m-%d')) YEAR) 
-                                                        BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 7 DAY)");
-                                                                                        $bd = mysqli_num_rows($bd);
-                                            ?>
-                                            <div class="span6">
-                                                <div class="panel panel-red">
-                                                    <div class="panel-heading">
-                                                        <div class="container-fluid">
-                                                            <div class="row-fluid">
-                                                                <div class="span3"><br />
-                                                                    <i class="fa fa-calendar  fa-5x"></i><br />
-                                                                </div>
-                                                                <div class="span8 text-right"><br />
-                                                                    <div class="huge"><?php echo $bd; ?></div>
-                                                                    <div>Current & Upcoming Birthdays</div><br />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <a href="birthdays.php">
-                                                        <div class="modal-footer">
-                                                            <span class="pull-left">View Birthdays</span>
+                                                            <span class="pull-left">Events</span>
                                                             <span class="pull-right"><i class="icon-chevron-right"></i></span>
                                                             <div class="clearfix"></div>
                                                         </div>
@@ -169,6 +102,7 @@ WHERE  DATE_SUB(STR_TO_DATE(date, '%Y-%m-%d'), INTERVAL YEAR(CURDATE())-YEAR(STR
                                             </div>
                                         </div>
                                     </div>
+                                   
 
                                     <div id="page-wrapper">
                                         <?php
@@ -178,7 +112,7 @@ WHERE  DATE_SUB(STR_TO_DATE(date, '%Y-%m-%d'), INTERVAL YEAR(CURDATE())-YEAR(STR
                                         ?>
                                         <div class="row-fluid">
                                             <div class="span6">
-                                                <div class="panel panel-primary">
+                                                <div class="panel panel-info">
                                                     <div class="panel-heading">
                                                         <div class="container-fluid">
                                                             <div class="row-fluid">
@@ -207,7 +141,7 @@ WHERE  DATE_SUB(STR_TO_DATE(date, '%Y-%m-%d'), INTERVAL YEAR(CURDATE())-YEAR(STR
                                             $sum = $row['value_sum'];
                                             ?>
                                             <div class="span6">
-                                                <div class="panel panel-green">
+                                                <div class="panel panel-success">
                                                     <div class="panel-heading">
                                                         <div class="container-fluid">
                                                             <div class="row-fluid">
@@ -241,7 +175,7 @@ WHERE  DATE_SUB(STR_TO_DATE(date, '%Y-%m-%d'), INTERVAL YEAR(CURDATE())-YEAR(STR
                                         ?>
                                         <div class="row-fluid">
                                             <div class="span6">
-                                                <div class="panel panel-info">
+                                                <div class="panel panel-primary">
                                                     <div class="panel-heading">
                                                         <div class="container-fluid">
                                                             <div class="row-fluid">

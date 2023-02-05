@@ -70,7 +70,6 @@
                 display: none;
             }
         }
-        -->
     </style>
     <?php include('print_header.php'); ?>
     <?php include('session.php'); ?>
@@ -101,11 +100,11 @@ font-family:"Times New Roman","serif"'><img width=100 height=20 id="Picture 1" s
 
                         <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
 text-align:center;line-height:normal'><b><span style='font-size:12.0pt;
-font-family:"Times New Roman","serif"'>Church members</span></b></p>
+font-family:"Times New Roman","serif"'></span></b></p>
 
                         <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
 text-align:center;line-height:normal'><b><span style='font-size:7.0pt;
-font-family:"Times New Roman","serif"'>Powered by Church manager <?php
+font-family:"Times New Roman","serif"'>Powered by <b> <?php echo $_SESSION['username']?> parish</b><?php
                                                                     $date = new DateTime();
                                                                     echo $date->format('Y');
                                                                     ?></span></b></p>
@@ -119,7 +118,7 @@ normal'><b><span style='font-size:10.0pt;font-family:"Times New Roman","serif"'>
                                     <div class="pull-left">
                                         <p class=msoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
 normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
-"Times New Roman","serif"'>All Subparish<o:p></o:p></span></p>
+"Times New Roman","serif"'>All Upcoming events<o:p></o:p></span></p>
 
                                         <p class=msoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
 normal'><span style='font-size:10.0pt;mso-bidi-font-size:11.0pt;font-family:

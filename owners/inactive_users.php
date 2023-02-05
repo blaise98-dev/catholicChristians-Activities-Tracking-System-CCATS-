@@ -45,7 +45,7 @@
 										</thead>
 										<tbody>
 													<?php
-													$user_query = mysqli_query($conn,"select * from admin where status=0")or die(mysqli_error($conn));
+													$user_query = mysqli_query($conn,"select * from admin where status=0 and role='diocese'")or die(mysqli_error($conn));
 													while($row = mysqli_fetch_array($user_query)){
 													$id = $row['admin_id'];
 													?>

@@ -12,6 +12,25 @@
                  <input class="input focused" name="givedate" id="focusedInput" type="text" type="text" onfocus="(this.type='date')" placeholder="Date" required>
                </div>
              </div>
+             <div class="control-group">
+                      <div class="controls">
+                        <select class="input focused" name="christian_username" id="focusedInput" required>
+                                      <option value="" selected>Select username</option>
+
+                                      <?php
+                                      $sql = mysqli_query($conn, "select * from members,subparish,community,admin 
+                                      where members.community=community.id and members.subparish=subparish.id 
+                                      and members.residence='" . $_SESSION['id'] . "' group by christian_id");
+                                      while ($rows = mysqli_fetch_array($sql)) { ?>
+
+                                          <option value="<?php echo $rows['mobile']; ?>"><?php echo $rows['mobile']; ?></option>
+                                      <?php
+                                      }
+                                      ?>
+                                  </select>                     
+                       </div>
+                    </div>
+
 										<div class="control-group">
                                           <div class="controls">
                                             <input class="input focused" name="amount" id="focusedInput" type="number" placeholder = "Amount" required>
@@ -25,7 +44,7 @@
                                         </div>
 										<div class="control-group">
                                           <div class="controls">
-                                            <input class="input focused" name="mobile" id="focusedInput" type="text" placeholder = "mobile Number" required>
+                                            <input class="input focused" name="mobile" id="focusedInput" type="text" placeholder = "Momo/ Airtel Money" required>
                                           </div>
                                         </div>
 										
@@ -52,6 +71,7 @@
 
 if (isset($_POST['save'])){
 $amount = $_POST['amount'];
+$christian_username=$_POST['christian_username'];
 $reason = $_POST['for'];
 $mobile = $_POST['mobile'];
 
@@ -60,7 +80,7 @@ $mobile = $_POST['mobile'];
     return strtoupper(bin2hex(openssl_random_pseudo_bytes(8)));
   }
   $trcode = GUID();
-mysqli_query($conn,"insert into giving (Amount,Trcode,na,ya,status,parish) values('$amount','$trcode','$mobile','$reason','pending','" . $_SESSION['id'] . "')")or die(mysqli_error($conn));
+mysqli_query($conn,"insert into giving (Amount,phone_used,Trcode,christian_username,ya,status,parish) values('$amount','$mobile','$trcode','$christian_username','$reason','pending','" . $_SESSION['id'] . "')")or die(mysqli_error($conn));
 
   $data = array(
     "telephoneNumber" => '25' . $mobile,

@@ -8,28 +8,48 @@
                                 <div class="span12">
 								<form method="post">
 										<div class="control-group">
-                                          <div class="controls">
-                                            <input class="input focused" name="amount" id="focusedInput" type="number" placeholder = "Amount" required>
-                                          </div>
-                                        </div>
+                      <div class="controls">
+                        <input class="input focused" name="amount" id="focusedInput" type="number" placeholder = "Amount" required>
+                      </div>
+                    </div>
+
+                    <div class="control-group">
+                      <div class="controls">
+                        <select class="input focused" name="christian_username" id="focusedInput" required>
+                                      <option value="" selected>Select username</option>
+
+                                      <?php
+                                      $sql = mysqli_query($conn, "select * from members,subparish,community,admin 
+                                      where members.community=community.id and members.subparish=subparish.id 
+                                      and members.residence='" . $_SESSION['id'] . "' group by christian_id");
+                                      while ($rows = mysqli_fetch_array($sql)) { ?>
+
+                                          <option value="<?php echo $rows['mobile']; ?>"><?php echo $rows['mobile']; ?></option>
+                                      <?php
+                                      }
+                                      ?>
+                                  </select>                     
+                       </div>
+                    </div>
+
 											<div class="control-group">
-                                          <div class="controls">
-                                            <input class="input focused" name="mobile" id="focusedInput" type="text" placeholder = "mobile Number" required>
-                                          </div>
-                                        </div>
+                        <div class="controls">
+                          <input class="input focused" name="mobile" id="focusedInput" type="text" placeholder = "Momo/Airtel money" required>
+                        </div>
+                      </div>
 										
 										
 											<div class="control-group">
-                                          <div class="controls">
-												<button name="save" class="btn btn-info" id="save" data-placement="right" title="Click to Save"><i class="icon-plus-sign icon-large"> Save</i></button>
-                                                <script type="text/javascript">
-	                                            $(document).ready(function(){
-	                                            $('#save').tooltip('show');
-	                                            $('#save').tooltip('hide');
-	                                            });
-	                                            </script>
-                                          </div>
-                                        </div>
+                        <div class="controls">
+                          <button name="save" class="btn btn-info" id="save" data-placement="right" title="Click to Save"><i class="icon-plus-sign icon-large"> Save</i></button>
+                              <script type="text/javascript">
+                            $(document).ready(function(){
+                            $('#save').tooltip('show');
+                            $('#save').tooltip('hide');
+                            });
+                            </script>
+                        </div>
+                    </div>
                                 </form>
 								</div>
                             </div>
@@ -41,6 +61,7 @@
 
 if (isset($_POST['save'])){
 $amount = $_POST['amount'];
+$christian_username=$_POST['christian_username'];
 $mobile = $_POST['mobile'];
   function GUID()
   {
@@ -49,7 +70,7 @@ $mobile = $_POST['mobile'];
   $trcode = GUID();
 $check_query=mysqli_query($conn,"select * from members where members.mobile=$mobile and members.Residence='" . $_SESSION['id'] . "'");
   if ($row = mysqli_fetch_array($check_query)) {
-mysqli_query($conn,"insert into tithe (Amount,Trcode,status,na,parish) values('$amount','$trcode','pending','$mobile','" . $_SESSION['id'] . "')")or die(mysqli_error($conn));
+mysqli_query($conn,"insert into tithe (Amount,Trcode,status,christian_username,phone_used,parish) values('$amount','$trcode','pending','$christian_username','$mobile','" . $_SESSION['id'] . "')")or die(mysqli_error($conn));
 
     $data = array(
       "telephoneNumber" => '25'.$mobile,

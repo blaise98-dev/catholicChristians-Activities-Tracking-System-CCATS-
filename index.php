@@ -1,82 +1,8 @@
-<!DOCTYPE html>
-<html lang="en" class="no-js">
-
-<head>
-    <meta charset="UTF-8" />
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
-    <title>CATHOLIC CHURCH MEMBERSHIP SYSTEM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Church Manager" />
-    <meta name="keywords" content="Church, Manager, Member registration, Donation, Tithe Manager" />
-    <meta name="author" content="Codrops" />
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" type="text/css" href="css/demo.css" />
-    <link rel="stylesheet" type="text/css" href="css/style3.css" />
-    <link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
-
-    <style>
-        .bg {
-            width: 100%;
-            height: 100%;
-            background: url("members/images/parish.jpg")no-repeat center center fixed;
-    -webkit-background-size: cover; /* For WebKit*/
-    -moz-background-size: cover;    /* Mozilla*/
-    -o-background-size: cover;      /* Opera*/
-    background-size: cover;         /* Generic*/
-        }
-    </style>
-</head>
-<?php include_once('members/dbconn.php'); ?>
-
-<body class="bg">
-    <div class="container">
-        <!-- Codrops top bar -->
-        <div class="codrops-top">
-
-
-            <div class="clr"></div>
-        </div>
-        <!--/ Codrops top bar -->
-        <header>
-            <h1>CATHOLIC MEMBERS <span>ACCESS POINT</span></h1>
-
-        </header>
-        <section>
-            <div id="container_demo">
-                <a class="hiddenanchor" id="toregister"></a>
-                <a class="hiddenanchor" id="tologin"></a>
-                <a class="hiddenanchor" id="tovisitoroffering"></a>
-
-                <div id="wrapper">
-                    <div id="login" class="animate form">
-                        <form action="#" method="POST" autocomplete="on">
-                            <h1>Log in</h1>
-                            <p>
-                                <label for="username" class="uname"> Username </label>
-                                <input id="username" name="username" required="required" type="text" placeholder="Mobile Number" />
-                            </p>
-                            <p>
-                                <label for="password" class="youpasswd" data-icon="p"> Your password </label>
-                                <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" />
-                            </p>
-                            <p class="keeplogin">
-                                <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" />
-                                <label for="loginkeeping">Keep me logged in</label>
-                            </p>
-                           
-                            <p class="login button">
-                                <input type="submit" value="Login" name="login" />
-                            </p>
-                            <a href="visitoroffering.php" class="to_register" style="text-decoration:none;">Are you visitor? return your offering/giving</a>
-
-                        </form>
-                        </br>
-                        <div class="error">
-                            <?php
+<?php
                             include('dbconn.php');
                             ?>
                             <?php
-
+$error="";
                             if (isset($_POST['login'])) {
 
                                 $username = $_POST['username'];
@@ -97,33 +23,104 @@
 
                                     header('location:members/dashboard.php');
                                 } else {
-                                    echo "
-                                <div>
-                                    <p style='color: red;'>Please contact parish admin to give you access!
-                                    </p>
-                                </div>";
+                                    $error="Please contact parish admin to give you access!";
                                 }
                                 } 
                                 else {
-                                    echo "
-                                <div>
-                                    <p style='color: red;'>Wrong username or password! Try Again
-                                    </p>
-                                </div>";
+                                    $error="Wrong username or password! Try Again";
                                 }
                             }
                             ?>
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
+    <title>CATHOLIC CHRISTIAN ACTIVITIES TRACKING SYSTEM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Church System" />
+    <meta name="keywords" content="Church, System, Member registration, Donation, Tithe System" />
+    <meta name="author" content="Codrops" />
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/style3.css" />
+    <link rel="stylesheet" type="text/css" href="members/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+
+    <style>
+        .bg {
+            width: 100%;
+            height: 100%;
+            background: url("members/images/back.jpg")no-repeat center center fixed;
+    -webkit-background-size: cover; /* For WebKit*/
+    -moz-background-size: cover;    /* Mozilla*/
+    -o-background-size: cover;      /* Opera*/
+    background-size: cover;         /* Generic*/
+        }
+    </style>
+</head>
+<?php include_once('members/dbconn.php'); ?>
+
+<body class="bg">
+    <div class="container">
+        <!-- Codrops top bar -->
+        <div class="codrops-top">
+
+
+            <div class="clr"></div>
+        </div>
+        <!--/ Codrops top bar -->
+        <header>
+            <h1>WELCOME TO CCATS </h1>
+
+        </header>
+        <section>
+            <div id="container_demo">
+                <a class="hiddenanchor" id="toregister"></a>
+                <a class="hiddenanchor" id="tologin"></a>
+                <a class="hiddenanchor" id="tovisitoroffering"></a>
+
+                <div id="wrapper">
+                    <div id="login" class="animate form">
+                        <form action="#" method="POST" autocomplete="on">
+                            <h1>CCATS ACCESS POINT</h1>
+                            <div class="error">
+                        <p style='color: red;'><?php echo $error;?></p>
                         </div>
+                            <p>
+                                <label for="username" class="uname"> Username </label>
+                                <input id="username" name="username" required="required" type="text" placeholder="Mobile Number" />
+                            </p>
+                            <p>
+                                <label for="password" class="youpasswd" data-icon="p"> Your password </label>
+                                <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" />
+                            </p>
+                            <p class="keeplogin">
+                                <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" />
+                                <label for="loginkeeping">Keep me logged in</label>
+                            </p>
+                            <button data-placement="right" title="Click Here to Sign In" id="signin" name="login" class="btn btn-info" type="submit"><i class="icon-signin icon-large"></i> Sign in</button>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#signin').tooltip('show');
+			$('#signin').tooltip('hide');
+		});
+	</script>
+                            
+                            <a href="visitoroffering.php" class="to_register " style="text-decoration:none;">Are you visitor? return your offering/giving</a>
+    </br></br>
+                            <p class="form-group">
+                            
 
-                        <p class="change_link">
-                            <a href="admin/index.php" class="to_register">Are you admin?</a>
-
-                            Not a member yet ?
-                            <a href="#toregister" class="to_register">Join us</a>
+                            Don't have an account?
+                            <a href="#toregister" class="link-info" style="text-decoration:none; font-size:1em;">Sign up</a><br>
+                            Are you admin? &nbsp;<a href="admin/index.php" id="signin" style="text-decoration:none; font-size:1em;">Login here</a>
 
                         </p>
 
-                        
+                        </form>
+                        </br>
                     </div>
 
 
@@ -166,7 +163,7 @@
                                     <option value="" selected>Select here ...</option>
 
                                     <?php
-                                    $sql = mysqli_query($conn, "select * from admin where username !='developer' and username !='admin'");
+                                    $sql = mysqli_query($conn, "select * from admin where username !='developer' and username !='admin' and role='parish' ");
                                     while ($rows = mysqli_fetch_array($sql)) { ?>
 
                                         <option value="<?php echo $rows['admin_id']; ?>"><?php echo $rows['username']; ?></option>
@@ -235,6 +232,7 @@
 
                                         <option value="<?php echo $associations['name']; ?>"><?php echo $associations['name']; ?></option>
                                     <?php } ?>
+                                    <option value="None">None</option>
                                 </select>
                             </div>
                             </p>

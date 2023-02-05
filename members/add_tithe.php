@@ -17,6 +17,11 @@
                <div class="controls">
                  <input class="input focused" name="amount" id="focusedInput" type="number" placeholder="Amount" required>
                </div>
+             </div> 
+             <div class="control-group">
+               <div class="controls">
+                 <input class="input focused" name="phone_used" id="focusedInput" type="text" placeholder="Momo/Airtel money" required>
+               </div>
              </div>
 
              <div class="control-group">
@@ -41,6 +46,7 @@
 
     if (isset($_POST['save'])) {
       $amount = $_POST['amount'];
+      $phone_used = $_POST['phone_used'];
       $year = $_POST['year'];
 
       function GUID()
@@ -48,28 +54,18 @@
         return strtoupper(bin2hex(openssl_random_pseudo_bytes(8)));
       }
       $trcode = GUID();
-      $result = mysqli_query($conn, "insert into tithe (Amount,year,Trcode,na,parish) values('$amount','$year','$trcode','$session_id','" . $_SESSION['parish'] . "')") or die(mysqli_error($conn));
+      $result = mysqli_query($conn, "insert into tithe (`Amount`, `phone_used`, `Trcode`, `status`, `christian_username`, `year`, `parish`) values('$amount','$phone_used','$trcode','pending','$session_id','$year','" . $_SESSION['parish'] . "')") or die(mysqli_error($conn));
       $data = array(
-        "telephoneNumber" => '25'.$session_id,
+        "telephoneNumber" => '25'.$phone_used,
         "amount" =>  $amount,
         "organizationId" => 'e8f3a6da-dda2-429f-8cfb-935fc996a7f5',
         "description" => 'Payment for tithe',
-        "callbackUrl" => "http://localhost/Projects/Final_ProjectKUMBADASLIVA/members/Tithes.php",
+        "callbackUrl" => "http://localhost/Projects/Final_ProjectKUMBADASLIVA/members/callback.php",
         "transactionId" => "$trcode"
 
       );
-$successfulPayment=array(
-  
-    "statusDescription"=>"PAID DONE SUCCESSFULLY",
-    "spTransactionId"=>"1189008900089",
-    "walletTransactionId"=>"142bd904043011e989e1a30736f9425c",
-    "chargedCommission"=> 2.5,
-    "currency"=>"RWF",
-    "paidAmount"=> $amount,
-    "transactionId"=> "$trcode",
-    "statusCode"=> "200",
-    "status"=> "SUCCESS"
-);
+
+      
 
       $headers = array(
         "Content-Type" => "application/json",
@@ -89,11 +85,7 @@ $successfulPayment=array(
       $result = curl_exec($ch);
       $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
       curl_close($ch);
-
-     if (!$result) {
-     echo ("Error occured try again with correct data!");
-     }
-
+      
      ?>
      <script>
        window.location = "Tithes.php";
@@ -102,6 +94,5 @@ $successfulPayment=array(
        });
      </script>
    <?php
-    }
-
+    }    
     ?>

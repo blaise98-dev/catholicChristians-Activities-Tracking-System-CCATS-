@@ -36,7 +36,7 @@
                         <div class="block-content collapse in">
                             <div class="span12">
                                 <form action="" method="post">
-                                    <table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
+                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-hover table-responsive table-bordered" id="example">
                                         <thead>
                                             <tr>
                                                 <th>member Name </th>
@@ -53,8 +53,8 @@
                                         <tbody>
                                             <!-----------------------------------Content------------------------------------>
                                             <?php
-                                            // $student_query = mysqli_query($conn,"SELECT *FROm members  LEFT OUTER JOIN offering ON members.id = offering.na WHERE offering.offeringid !='' ")or die(mysqli_error($conn));
-                                            $student_query = mysqli_query($conn, "SELECT *FROm members  LEFT OUTER JOIN offering ON members.id = offering.na WHERE offering.offeringid !='' and offering.status='pending' ") or die(mysqli_error($conn));
+                                            // $student_query = mysqli_query($conn,"SELECT *FROm members  LEFT OUTER JOIN offering ON members.id = offering.christian_username WHERE offering.offeringid !='' ")or die(mysqli_error($conn));
+                                            $student_query = mysqli_query($conn, "SELECT *FROm members  LEFT OUTER JOIN offering ON members.id = offering.christian_username WHERE offering.offeringid !='' and offering.status='pending' ") or die(mysqli_error($conn));
 
                                             while ($row = mysqli_fetch_array($student_query)) {
                                                 $username = $row['offeringid'];

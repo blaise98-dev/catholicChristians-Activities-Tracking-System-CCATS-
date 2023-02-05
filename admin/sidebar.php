@@ -208,16 +208,25 @@
 
        <!------/.* manage memberss sidebar*------->
        <li>
-         <a href="javascript:;" role="button" class="dropdown-toggle" data-toggle="collapse" data-target="#bs"><i class="icon-chevron-right"></i><i class="icon-group"></i>&nbsp;manage members
+         <a href="javascript:;" role="button" class="dropdown-toggle" data-toggle="collapse" data-target="#bs"><i class="icon-chevron-right"></i><i class="icon-group"></i>&nbsp;manage Christians
            <div class="muted pull-right"><i class="caret"></i></div>
          </a>
          <ul id="bs" class="collapse">
            <li class="">
-             <a href="membersDetail.php"><i class="icon-chevron-right"></i><i class="icon-user"></i> member Details</a>
+             <a href="membersDetail.php"><i class="icon-chevron-right"></i><i class="icon-user"></i> Christian Details</a>
            </li>
 
            <li>
-             <a href="add_members.php"><i class="icon-chevron-right"></i><i class="icon-plus-sign-alt"></i> Add members
+             <a href="add_members.php"><i class="icon-chevron-right"></i><i class="icon-plus-sign-alt"></i> Add Christian
+             </a>
+           </li>
+           <li class="divider"></li>
+           <li>
+             <a href="incomingChristians.php"><i class="icon-chevron-right"></i><i class="icon-signin"></i> Incoming Christian
+             </a>
+           </li>
+           <li>
+             <a href="outgoingChristians.php"><i class="icon-chevron-right"></i><i class="icon-signout"></i> Outgoing Christian
              </a>
            </li>
          </ul>
@@ -299,7 +308,7 @@
        </li>
        <!------/.* finance sidebar*------->
        <li>
-         <a href="javascript:;" role="button" class="dropdown-toggle" data-toggle="collapse" data-target="#bs1"><i class="icon-chevron-right"></i><i class="icon-money"></i>&nbsp;Givings/Tithes
+         <a href="javascript:;" role="button" class="dropdown-toggle" data-toggle="collapse" data-target="#bs1"><i class="icon-chevron-right"></i><i class="icon-money"></i>&nbsp;Collections
            <div class="muted pull-right"><i class="caret"></i></div>
          </a>
          <ul id="bs1" class="collapse">
@@ -326,19 +335,6 @@
            </li>
          </ul>
        </li>
-
-       <!------/.* manage System user sidebar*------->
-       <!-- <li>
-         <a href="javascript:;" role="button" class="dropdown-toggle" data-toggle="collapse" data-target="#bs2"><i class="icon-chevron-right"></i><i class="icon-group"></i>&nbsp;manage System User
-           <div class="muted pull-right"><i class="caret"></i></div>
-         </a>
-         <ul id="bs2" class="collapse">
-
-           <li class="">
-             <a href="admin_user.php"><i class="icon-chevron-right"></i><i class="icon-user"></i>&nbsp;System User</a>
-           </li>
-         </ul>
-       </li> -->
 
        <!------/.* System Log sidebar*------->
        <!-- <li>

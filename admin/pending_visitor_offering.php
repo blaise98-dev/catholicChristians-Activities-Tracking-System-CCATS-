@@ -93,7 +93,6 @@
         echo '<meta http-equiv="refresh" content="0;url=pending_visitor_offering.php">';
         }
         ?>
-
         <!-- modal -->
         <div id="modaltithe" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mymodalLabel" aria-hidden="true">
             <div class="modal-body">

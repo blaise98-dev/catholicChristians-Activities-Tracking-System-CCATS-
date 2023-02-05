@@ -6,8 +6,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="St.Lukes Boys School management System">
-	<meta name="author" content="Kithinji Godfrey">
+	<meta name="description" content="students">
+	<meta name="author" content="Blaise">
 	<link href="admin/bootstrap/css/index_background.css" rel="stylesheet" media="screen" />
 	<link rel="shortcut icon" href="images/logo.png" />
 
@@ -32,23 +32,50 @@
 								});
 							</script>
 						</div>
-						<div class="block-content collapse in" ">
-							<h3></i><i class=" icon-group"></i>&nbsp; Developer</h3>
+						<div class="block-content collapse in">
+							<h3></i><i class=" icon-group"></i>&nbsp; Developers</h3>
 							<hr>
 							<div class="span3"></div>
+							<p align="left">
+
+							<div class="span3">
+								<center>
+									<img id="developers" src="developers/Blaise_Photo.jpg" class="img-circle">
+									<hr>
+									<p>Name:NINDENKIMANA Blaise</p>
+									<p>RegNo:219001831</p>
+									<p>Email:<a href="mailto:bnindenkimana2@gmail.com">bnindenkimana2@gmail.com</a>
+</p>
+									<p>Student at UR_CST </p>
+								</center>
+							</div>
+							</p>
 							<p align="center">
 
 							<div class="span3">
 								<center>
-									<img id="developers" src="developers/kumba.jpg" class="img-circle">
+									<img id="developers" src="developers/celestin.jpg" class="img-circle">
 									<hr>
-									<p>Name:Bigirumwami Jean Baptiste</p>
-									<p>Address:Gishushu</p>
-									<p>Email:<a href="https://www.gmail.com">bigirumwamibaptiste@gmail.com</a></p>
-									<p>Student at AUCA </p>
+									<p>Name:HABINEZA Celestin</p>
+									<p>RegNo:219001013</p>
+									<p>Email:<a href="mailto:bhaineza1111@gmail.com">habineza1111@gmail.com</a></p>
+									<p>Student at UR_CST </p>
 								</center>
 							</div>
 							</p>
+							<p align="right">
+
+<div class="span3">
+	<center>
+		<img id="developers" src="developers/Rachel.jpeg" class="img-circle">
+		<hr>
+		<p>Name:DUTERIMBERE Rachel</p>
+		<p>RegNo:219001013</p>
+		<p>Email:<a href="mailto:duterachel@gmail.com">duterachel@gmail.com</a></p>
+		<p>Student at UR_CST </p>
+	</center>
+</div>
+</p>
 
 
 						</div>

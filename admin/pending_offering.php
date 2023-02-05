@@ -53,8 +53,8 @@
                                         <tbody>
                                             <!-----------------------------------Content------------------------------------>
                                             <?php
-                                            // $student_query = mysqli_query($conn,"SELECT *FROm members  LEFT OUTER JOIN offering ON members.id = offering.na WHERE offering.offeringid !='' ")or die(mysqli_error($conn));
-                                            $student_query = mysqli_query($conn, "SELECT *FROm members  LEFT OUTER JOIN offering ON members.id = offering.na WHERE offering.offeringid !='' and offering.status='pending'and offering.parish ='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
+                                            // $student_query = mysqli_query($conn,"SELECT *FROm members  LEFT OUTER JOIN offering ON members.id = offering.christian_username WHERE offering.offeringid !='' ")or die(mysqli_error($conn));
+                                            $student_query = mysqli_query($conn, "SELECT *FROm members  LEFT OUTER JOIN offering ON members.id = offering.christian_username WHERE offering.offeringid !='' and offering.status='pending'and offering.parish ='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
 
                                             while ($row = mysqli_fetch_array($student_query)) {
                                                 $username = $row['offeringid'];

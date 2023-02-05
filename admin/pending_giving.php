@@ -54,7 +54,7 @@
                                         <tbody>
                                             <!-----------------------------------Content------------------------------------>
                                             <?php
-                                            $student_query = mysqli_query($conn, "SELECT *FROm members  LEFT OUTER JOIN giving ON members.id = giving.na WHERE giving.givingid !='' and giving.status='pending' and giving.parish='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
+                                            $student_query = mysqli_query($conn, "SELECT *FROm members  LEFT OUTER JOIN giving ON members.id = giving.christian_username WHERE giving.givingid !='' and giving.status='pending' and giving.parish='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
                                             while ($row = mysqli_fetch_array($student_query)) {
                                                 $username = $row['givingid'];
 

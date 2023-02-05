@@ -19,7 +19,7 @@
 						<image src="images/sclogo.png" width="45%" height="45%" />
 					</div>
 					<?php
-					$count_payment = mysqli_query($conn, "select * from members,tithe WHERE members.id=tithe.na and tithe.status='paid' and members.Residence='" . $_SESSION['id'] . "'");
+					$count_payment = mysqli_query($conn, "select * from members,tithe WHERE members.id=tithe.christian_username and tithe.status='paid' and members.Residence='" . $_SESSION['id'] . "'");
 					$count = mysqli_num_rows($count_payment);
 					?>
 					<div id="block_bg" class="block">
@@ -65,8 +65,8 @@
 												<th>mobile No. </th>
 												<th>Transaction Code</th>
 												<th>Amount</th>
+												<th>Momo Pay</th>
 												<th>Status</th>
-
 												<th>Date & Time </th>
 
 
@@ -76,7 +76,7 @@
 										<tbody>
 											<!-----------------------------------Content------------------------------------>
 											<?php
-											$student_query = mysqli_query($conn, "select * from members,tithe WHERE members.id=tithe.na and tithe.status='paid' and members.Residence='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
+											$student_query = mysqli_query($conn, "select * from members,tithe WHERE members.id=tithe.christian_username and tithe.status='paid' and members.Residence='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
 											while ($row = mysqli_fetch_array($student_query)) {
 												$username = $row['titheid'];
 
@@ -86,8 +86,8 @@
 													<td><?php echo $row['fname'] . " " . $row['lname']; ?></td>
 													<td><?php echo $row['mobile']; ?></td>
 													<td><?php echo $row['Trcode']; ?></td>
-
 													<td><?php echo $row['Amount']; ?></td>
+													<td><?php echo $row['phone_used']; ?></td>
 													<td><?php echo $row['status']; ?></td>
 
 													<td><?php echo $row['paytime']; ?></td>

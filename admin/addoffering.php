@@ -12,7 +12,7 @@
                      <div class="row-fluid">
                         <!-- block -->
 				<?php	
-	             $count_user=mysqli_query($conn, "select * from members,offering WHERE members.id=offering.na and offering.status='paid' and offering.parish='" . $_SESSION['id'] . "'");
+	             $count_user=mysqli_query($conn, "select * from members,offering WHERE members.id=offering.christian_username and offering.status='paid' and offering.parish='" . $_SESSION['id'] . "'");
 	             $count = mysqli_num_rows($count_user);
                  ?>	 
                         <div id="block_bg" class="block">
@@ -31,6 +31,7 @@
 												<th></th>
 												<th>Name</th>
 												<th>Amount</th>
+												<th>Momo Pay</th>
 												<th>Transaction Id</th>
 										
 												<th>Date</th>
@@ -38,7 +39,7 @@
 										</thead>
 										<tbody>
 													<?php
-													$user_query = mysqli_query($conn, "select * from members INNER JOIN offering ON members.id=offering.na and  offering.parish='" . $_SESSION['id'] . "'")or die(mysqli_error($conn));
+													$user_query = mysqli_query($conn, "select * from members INNER JOIN offering ON members.id=offering.christian_username and  offering.parish='" . $_SESSION['id'] . "'")or die(mysqli_error($conn));
 													while($row = mysqli_fetch_array($user_query)){
 													$id = $row['id'];
 													?>
@@ -50,6 +51,7 @@
 												<td><?php echo $row['fname']; ?> <?php echo $row['lname']; ?></td>
 	
 												<td><?php echo $row['Amount']; ?></td>
+												<td><?php echo $row['phone_used']; ?></td>
 												<td><?php echo $row['Trcode']; ?></td>
 												<td><?php echo $row['paytime']; ?></td>
 											

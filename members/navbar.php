@@ -10,7 +10,10 @@
                      <span class="icon-bar"></span>
                      <span class="icon-bar"></span>
                     </a>
-                    <span class="brand" href="#">members Panel</span>
+                    <?php $query= mysqli_query($conn,"select admin.username from members,admin where members.id = '$session_id' and members.Residence=admin.admin_id and admin.role='parish'")or die(mysqli_error($conn));
+							  $row = mysqli_fetch_array($query);
+						?>
+                    <span class="brand" href="#">Christian Panel,&nbsp;<b><?php echo $row['username']; ?></b> parish</span>
 				 </div>
 				  <!--.nav-collapse -->
                     <div class="nav-collapse collapse">

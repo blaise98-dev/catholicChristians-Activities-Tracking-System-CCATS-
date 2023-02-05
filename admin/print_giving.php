@@ -68,7 +68,7 @@
         display: none;
       }
     }
-    -->
+    
   </style>
   <?php include('print_header.php'); ?>
   <?php include('session.php'); ?>
@@ -124,6 +124,8 @@ normal'><span style='font-size:10.0pt;mso-bidi-font-size:11.0pt;font-family:
                                   $date = new DateTime();
                                   echo $date->format('l, F jS, Y');
                                   ?><o:p></o:p></span></p>
+                            <h2>List of Christian Givings of <?php echo $_SESSION['username']?> parish</h2>
+
 
                     <div class="pull-right">
                       <div class="empty">
@@ -210,7 +212,7 @@ normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
 
                         <!-- mysqli FETCH ARRAY-->
                         <?php
-                        $student_query = mysqli_query($conn, "select * from members,giving WHERE members.id=giving.na and giving.status='paid' and giving.parish='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
+                        $student_query = mysqli_query($conn, "select * from members,giving WHERE members.id=giving.christian_username and giving.status='paid' and giving.parish='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
                         while ($row = mysqli_fetch_array($student_query)) {
                           $RegNo = $row['id'];
                         ?>
@@ -270,7 +272,7 @@ normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
                       </tr>
 
                       <?php
-                        $student_query = mysqli_query($conn, "select sum(giving.amount) as totalgiving from members,giving WHERE members.id=giving.na and giving.status='paid' and giving.parish='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
+                        $student_query = mysqli_query($conn, "select sum(giving.amount) as totalgiving from members,giving WHERE members.id=giving.christian_username and giving.status='paid' and giving.parish='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
                         while ($row = mysqli_fetch_array($student_query)) {
                           $RegNo = $row['id'];
                         ?>

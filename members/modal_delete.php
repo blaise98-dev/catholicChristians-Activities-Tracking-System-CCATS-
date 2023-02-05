@@ -104,4 +104,20 @@
 							<button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-remove icon-large"></i> Close</button>
 							<button name="delete_user_log" class="btn btn-danger"><i class="icon-check icon-large"></i> Yes</button>
 						</div>
+					</div>	
+					<!-------------------------------------- user log delete modal ------------------------------------->
+					<div id="transfer_delete" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mymodalLabel" aria-hidden="true">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+							<h3 id="mymodalLabel">Delete  Transfer request?</h3>
+						</div>
+						<div class="modal-body">
+							<div class="alert alert-danger">
+								<p>Are you sure you want to delete the Transfer you checked?</p>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-remove icon-large"></i> Close</button>
+							<button name="delete_transfer" class="btn btn-danger"><i class="icon-check icon-large"></i> Yes</button>
+						</div>
 					</div>

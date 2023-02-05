@@ -17,6 +17,11 @@
                  <input class="input focused" name="amount" id="focusedInput" type="number" placeholder="Amount" required>
                </div>
              </div>
+             <div class="control-group">
+               <div class="controls">
+                 <input class="input focused" name="phone_used" id="focusedInput" type="number" placeholder="Momo/ Airtel money" required>
+               </div>
+             </div>
 
              <div class="control-group">
                <div class="controls">
@@ -46,17 +51,17 @@
     if (isset($_POST['save'])) {
       $amount = $_POST['amount'];
       $reason = $_POST['for'];
-      $reason = $_POST['mobile'];
+      $mobile = $_POST['phone_used'];
       // $na = $_POST['na'];
       function GUID()
       {
         return strtoupper(bin2hex(openssl_random_pseudo_bytes(8)));
       }
       $trcode = GUID();
-      mysqli_query($conn, "insert into giving (Amount,Trcode,na,ya,status,parish) values('$amount','$trcode','$mobile','$reason','pending','" . $_SESSION['parish'] . "')") or die(mysqli_error($conn));
+      mysqli_query($conn, "insert into giving (Amount,phone_used,Trcode,christian_username,ya,status,parish) values('$amount','$mobile','$trcode','$session_id','$reason','pending','" . $_SESSION['parish'] . "')") or die(mysqli_error($conn));
 
       $data = array(
-        "telephoneNumber" => '25'.$session_id,
+        "telephoneNumber" => '25'.$mobile,
         "amount" =>  $amount,
         "organizationId" => 'e8f3a6da-dda2-429f-8cfb-935fc996a7f5',
         "description" => 'Payment for giving',

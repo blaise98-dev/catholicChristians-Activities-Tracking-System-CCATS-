@@ -21,7 +21,7 @@
 					</div>
 
 					<?php
-					$count_user = mysqli_query($conn, "select * from offering where na='$session_id'");
+					$count_user = mysqli_query($conn, "select * from members INNER JOIN offering ON members.id=offering.christian_username and offering.parish=members.Residence and offering.status='paid' and members.id='$session_id' and members.id=offering.christian_username;");
 					$count = mysqli_num_rows($count_user);
 					?>
 					<div id="block_bg" class="block">
@@ -34,7 +34,7 @@
 						<div class="block-content collapse in">
 							<div class="span12">
 								<form action="delete_user_offering.php" name="frmUser" method="post">
-									<table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
+									<table cellpadding="0" cellspacing="0" border="0" class=" table table-striped table-hover table-responsive table-bordered" id="example">
 										<a data-placement="right" title="Click to Delete check item" data-toggle="modal" href="#offering_delete" id="delete" class="btn btn-danger" name="delete_offering"><i class="icon-trash icon-large"> Delete</i></a>
 										<script type="text/javascript">
 											$(document).ready(function() {
@@ -46,9 +46,10 @@
 										<thead>
 											<tr>
 												<th></th>
-												<th>Name</th>
+												<th>No</th>
 												<th>Year</th>
 												<th>Amount</th>
+                                                <th>Payment Mobile/Airtel money</th>
 												<th>Transaction Id</th>
 												<th>Status</th>
 												<th>Date</th>
@@ -56,27 +57,24 @@
 										</thead>
 										<tbody>
 											<?php
-											$user_query = mysqli_query($conn, "select * from members INNER JOIN offering ON members.id=offering.na where na='$session_id'") or die(mysqli_error($conn));
+											$user_query = mysqli_query($conn, "select * from members INNER JOIN offering ON members.id=offering.christian_username and offering.parish=members.Residence and offering.status='paid' and members.id='$session_id' and members.id=offering.christian_username;") or die(mysqli_error($conn));
+											$i=0;
 											while ($row = mysqli_fetch_array($user_query)) {
 												$id = $row['offeringid'];
+												$i++;
 											?>
 
 												<tr>
 													<td width="30">
 														<input id="optionsCheckbox" class="uniform_on" name="selector[]" type="checkbox" value="<?php echo $id; ?>">
 													</td>
-													<td><?php echo $row['fname']; ?> <?php echo $row['lname']; ?></td>
+													<td><?php echo $i;?></td>
 													<td><?php echo $row['year']; ?>
-
 													<td><?php echo $row['Amount']; ?></td>
+													<td><?php echo $row['phone_used']; ?></td>
 													<td><?php echo $row['Trcode']; ?></td>
 													<td><?php echo $row['status']; ?></td>
 													<td><?php echo $row['paytime']; ?></td>
-
-
-
-
-
 												</tr>
 											<?php } ?>
 										</tbody>

@@ -21,7 +21,7 @@
                </div>	
 				
 				<?php	
-	             $count_user=mysqli_query($conn,"select * from tithe ");
+	             $count_user=mysqli_query($conn,"select * from members INNER JOIN tithe ON members.id=tithe.christian_username and tithe.parish=members.Residence and tithe.status='paid' and members.id='$session_id' and members.id=tithe.christian_username; ");
 	             $count = mysqli_num_rows($count_user);
                  ?>	 
                         <div id="block_bg" class="block">
@@ -48,14 +48,14 @@
 												<th></th>
 												<th>Name</th>
 												<th>Amount</th>
+												<th>Momo Pay</th>
 												<th>Transaction Id</th>
-										
 												<th>Date</th>
 										   </tr>
 										</thead>
 										<tbody>
 													<?php
-													$user_query = mysqli_query($conn,"select * from members INNER JOIN tithe ON members.id=tithe.na ")or die(mysqli_error());
+													$user_query = mysqli_query($conn,"select * from members INNER JOIN tithe ON members.id=tithe.christian_username and tithe.parish=members.Residence and tithe.status='paid' and members.id='$session_id' and members.id=tithe.christian_username; ")or die(mysqli_error());
 													while($row = mysqli_fetch_array($user_query)){
 													$id = $row['id'];
 													?>
@@ -67,6 +67,7 @@
 												<td><?php echo $row['fname']; ?> <?php echo $row['lname']; ?></td>
 	
 												<td><?php echo $row['Amount']; ?></td>
+												<td><?php echo $row['phone_used']; ?></td>
 												<td><?php echo $row['Trcode']; ?></td>
 												<td><?php echo $row['paytime']; ?></td>
 											

@@ -19,7 +19,7 @@
 						<image src="images/sclogo.png" width="45%" height="45%" />
 					</div>
 					<?php
-					$count_student = mysqli_query($conn, "select * from members,offering WHERE members.id=offering.na and offering.status='paid' and offering.parish='" . $_SESSION['id'] . "'");
+					$count_student = mysqli_query($conn, "select * from members,offering WHERE members.id=offering.christian_username and offering.status='paid' and offering.parish='" . $_SESSION['id'] . "'");
 					$count = mysqli_num_rows($count_student);
 					?>
 					<div id="block_bg" class="block">
@@ -58,7 +58,7 @@
 						<div class="block-content collapse in">
 							<div class="span12">
 								<form action="" method="post">
-									<table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
+									<table cellpadding="0" cellspacing="0" border="0" class=" table table-striped table-hover table-responsive table-bordered" id="example">
 										<thead>
 											<tr>
 												<th>member Name </th>
@@ -66,7 +66,6 @@
 												<th>Transaction Code</th>
 												<th>Amount</th>
 												<th>Status</th>
-
 												<th>Date & Time </th>
 
 											</tr>
@@ -74,8 +73,8 @@
 										<tbody>
 											<!-----------------------------------Content------------------------------------>
 											<?php
-											// $student_query = mysqli_query($conn,"SELECT *FROm members  LEFT OUTER JOIN offering ON members.id = offering.na WHERE offering.offeringid !='' ")or die(mysqli_error($conn));
-											$student_query = mysqli_query($conn, "select * from members,offering WHERE members.id=offering.na and offering.status='paid'and offering.parish='" . $_SESSION['id'] . "'") or die(mysqli_error($conn));
+											// $student_query = mysqli_query($conn,"SELECT *FROm members  LEFT OUTER JOIN offering ON members.id = offering.christian_username WHERE offering.offeringid !='' ")or die(mysqli_error($conn));
+											$student_query = mysqli_query($conn, "select * from members,offering WHERE members.id=offering.christian_username and offering.status='paid'and offering.parish='" . $_SESSION['id'] . "'") or die(mysqli_error($conn));
 
 											while ($row = mysqli_fetch_array($student_query)) {
 												$username = $row['offeringid'];

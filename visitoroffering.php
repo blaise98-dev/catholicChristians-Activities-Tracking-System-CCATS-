@@ -18,7 +18,7 @@
         .bg {
             width: 100%;
             height: 100%;
-            background: url("members/images/parish.jpg")no-repeat center center fixed;
+            background: url("members/images/parish2.jpg")no-repeat center center fixed;
     -webkit-background-size: cover; /* For WebKit*/
     -moz-background-size: cover;    /* Mozilla*/
     -o-background-size: cover;      /* Opera*/
@@ -38,7 +38,7 @@
         </div>
         <!--/ Codrops top bar -->
         <header>
-            <h1>CATHOLIC MEMBERS <span>ACCESS POINT</span></h1>
+            <h1>CATHOLIC Christian <span>ACCESS POINT</span></h1>
 
         </header>
         <section>
@@ -112,7 +112,7 @@
                                     <option value="" selected>Select parish...</option>
 
                                     <?php
-                                    $sql = mysqli_query($conn, "select * from admin where username !='developer' and username !='admin'");
+                                    $sql = mysqli_query($conn, "select * from admin where username !='developer' and username !='admin' and role='parish'");
                                     while ($rows = mysqli_fetch_array($sql)) { ?>
 
                                         <option value="<?php echo $rows['admin_id']; ?>"><?php echo $rows['username']; ?></option>

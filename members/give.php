@@ -17,7 +17,7 @@
 						<image src="images/sclogo.png" width="45%" height="45%" />
 					</div>
 					<?php
-					$count_student = mysqli_query($conn, "select * from giving where na='$session_id'");
+					$count_student = mysqli_query($conn, "select * from members INNER JOIN giving ON members.id=giving.christian_username and giving.parish=members.Residence and giving.status='paid' and members.id='$session_id' and members.id=giving.christian_username;");
 					$count = mysqli_num_rows($count_student);
 					?>
 					<div id="block_bg" class="block">
@@ -40,6 +40,10 @@
 						<div class="container-fluid">
 							<div class="row-fluid">
 								<div class="empty">
+								<div class="pull-left">
+										<a href="giving.php" class="btn btn-info"  data-placement="left" ><i class="icon-plus icon-large"></i> Add new Donation</a>
+										
+									</div>
 									<div class="pull-right">
 										<a href="print_giving.php" class="btn btn-info" id="print" data-placement="left" title="Click to Print"><i class="icon-print icon-large"></i> Print List</a>
 										<script type="text/javascript">
@@ -56,38 +60,35 @@
 						<div class="block-content collapse in">
 							<div class="span12">
 								<form action="" method="post">
-									<table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
+									<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-hover table-responsive table-bordered" id="example">
 										<thead>
 											<tr>
-												<th>member Name </th>
-												<th>mobile No. </th>
+												<th>No </th>
+                                                <th>Payment Mobile/Airtel money</th>
 												<th>Transaction Code</th>
 												<th>Amount</th>
 												<th>Giving For</th>
-
 												<th>Date & Time </th>
-
-
-
 											</tr>
 										</thead>
 										<tbody>
 											<!-----------------------------------Content------------------------------------>
 											<?php
-											$student_query = mysqli_query($conn, "SELECT *FROm members  LEFT OUTER JOIN giving ON members.id = giving.na WHERE giving.na ='$session_id' ") or die(mysqli_error($conn));
+											$student_query = mysqli_query($conn, "select * from members INNER JOIN giving ON members.id=giving.christian_username and giving.parish=members.Residence and giving.status='paid' and members.id='$session_id' and members.id=giving.christian_username; ") or die(mysqli_error($conn));
+											
+											$i=0;
 											while ($row = mysqli_fetch_array($student_query)) {
 												$username = $row['givingid'];
+												$i++;
 
 											?>
 
 												<tr>
-													<td><?php echo $row['fname'] . " " . $row['lname']; ?></td>
-													<td><?php echo $row['mobile']; ?></td>
+													<td><?php echo $i; ?></td>
+													<td><?php echo $row['phone_used']; ?></td>
 													<td><?php echo $row['Trcode']; ?></td>
-
 													<td><?php echo $row['Amount']; ?></td>
-
-													<td><?php echo $row['ya']; ?></td>
+													<td><?php echo $row['christian_username']; ?></td>
 													<td><?php echo $row['paytime']; ?></td>
 												</tr>
 

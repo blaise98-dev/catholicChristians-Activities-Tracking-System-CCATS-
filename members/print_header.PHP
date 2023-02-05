@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js">
     <head>
-        <title>Church manager</title>		   
+        <title>Christian collections report</title>		   
         <!-- Bootstrap -->
 			<!-- <link href="images/logo.png" rel="icon" type="image"> -->
 			<link href="../images/logo.png" rel="icon" type="image">

@@ -254,6 +254,17 @@
         <!------/.* System Log sidebar*------->
 
         <li>
+          <a href="javascript:;" role="button" class="dropdown-toggle" data-toggle="collapse" data-target="#bs6"><i class="icon-chevron-right"></i><i class="fa fa-exchange"></i>&nbsp;Transfer management
+            <div class="muted pull-right"><i class="caret"></i></div>
+          </a>
+          <ul id="bs6" class="collapse">
+            <li class="">
+              <a href="add_transfer.php"><i class="icon-chevron-right"></i><i class="fa fa-exchange"></i> Transfer request</a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
           <a href="javascript:;" role="button" class="dropdown-toggle" data-toggle="collapse" data-target="#bs5"><i class="icon-chevron-right"></i><i class="icon-book"></i>&nbsp;Events Review
             <div class="muted pull-right"><i class="caret"></i></div>
           </a>
@@ -266,6 +277,7 @@
             </li>
           </ul>
         </li>
+
         <!------/.* notification sidebar*------->
         <!-- <li class="active">
                            <a href="javascript:;" role="button" class="dropdown-toggle" data-toggle="collapse" data-target="#bs4"><i class="icon-chevron-right"></i><i class="icon-search icon-large"></i>&nbsp;Advance Search 

@@ -4,7 +4,7 @@
 <body>
 	<?php include('navbar.php'); ?>
 	<?php include('sidebar.php'); ?>
-	<div class="container-fluid">
+	<div class="container-fluid ">
 		<div class="row-fluid">
 			<div class="span9" id="content">
 				<div class="row-fluid">
@@ -41,7 +41,7 @@
 						<div class="block-content collapse in">
 							<div class="span12">
 								<form action="" method="post">
-									<table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
+									<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-hover table-responsive table-bordered" id="example">
 										<thead>
 											<tr>
 												<th>N<u><sup>o</sup></u></th>

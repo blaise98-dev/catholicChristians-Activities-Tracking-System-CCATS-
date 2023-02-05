@@ -5,9 +5,9 @@ dbcon();
 <!DOCTYPE html>
 <html class="no-js">
     <head>
-        <title>Catholic church membership system</title>
-		<meta name="description" content="church membership system">
-		<meta name="author" content="Baptiste BIGIRUMWAMI">
+        <title>Catholic christians Activities Tracking system</title>
+		<meta name="description" content="Catholic christians Activities Tracking system">
+		<meta name="author" content="Blaise NINDENKIMANA">
 		<meta charset="UTF-8">	
 		
         <!-- Bootstrap -->

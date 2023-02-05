@@ -20,7 +20,7 @@
 						<image src="images/sclogo.png" width="45%" height="45%" />
 					</div>
 					<?php
-					$count_student = mysqli_query($conn, "select * from members,giving WHERE members.id=giving.na and giving.status='paid'and giving.parish='" . $_SESSION['id'] . "'");
+					$count_student = mysqli_query($conn, "select * from members,giving WHERE members.id=giving.christian_username and giving.status='paid'and giving.parish='" . $_SESSION['id'] . "'");
 					$count = mysqli_num_rows($count_student);
 					?>
 					<div id="block_bg" class="block">
@@ -59,7 +59,7 @@
 						<div class="block-content collapse in" id="print_list">
 							<div class="span12">
 								<form action="" method="post">
-									<table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
+									<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-hover table-responsive table-bordered" id="example">
 										<thead>
 											<tr>
 												<th>member Name </th>
@@ -78,7 +78,7 @@
 										<tbody>
 											<!-----------------------------------Content------------------------------------>
 											<?php
-											$student_query = mysqli_query($conn, "select * from members,giving WHERE members.id=giving.na and giving.status='paid' and giving.parish ='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
+											$student_query = mysqli_query($conn, "select * from members,giving WHERE members.id=giving.christian_username and giving.status='paid' and giving.parish ='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
 											while ($row = mysqli_fetch_array($student_query)) {
 												$username = $row['givingid'];
 

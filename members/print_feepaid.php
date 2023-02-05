@@ -70,7 +70,6 @@
         display: none;
       }
     }
-    -->
   </style>
   <?php include('print_header.php'); ?>
   <?php include('session.php'); ?>

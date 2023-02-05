@@ -14,7 +14,7 @@
                             <div class="block-content collapse in">
                                 <div class="span12">
 								<?php
-								$query = mysqli_query($conn,"select * from members where keyu= '$get_member_id' and members.Residence='" . $_SESSION['id'] . "'")or die(mysqli_error($conn));
+								$query = mysqli_query($conn,"select * from members where christian_id= '$get_member_id' and members.Residence='" . $_SESSION['id'] . "'")or die(mysqli_error($conn));
 								$row = mysqli_fetch_array($query);
 								?>
 								
@@ -141,7 +141,7 @@ $mobile= $_POST['mobile'];
 $email= $_POST['email'];
 $password = $_POST['password'];
 
-mysqli_query($conn,"UPDATE members SET fname = '$fname',sname ='$sname',lname='$lname',Gender='$Gender',Birthday='$birthday',pob='$pob',ministry='$ministry',mobile='$mobile',email='$email',password='$password' where keyu='$get_member_id'") 
+mysqli_query($conn,"UPDATE members SET fname = '$fname',sname ='$sname',lname='$lname',Gender='$Gender',Birthday='$birthday',pob='$pob',ministry='$ministry',mobile='$mobile',email='$email',password='$password' where christian_id='$get_member_id'") 
 or die(mysqli_error($conn));
 
 mysqli_query($conn,"insert into activity_log (date,username,action)

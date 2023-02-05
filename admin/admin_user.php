@@ -68,7 +68,7 @@
 											
 												<?php include('toolttip_edit_delete.php'); ?>															
 												<td width="120">
-												<a rel="tooltip"  title="Edit staff" id="e<?php echo $id; ?>" href="edit_user.php<?php echo '?id='.$id; ?>"  data-toggle="modal" class="btn btn-success"><i class="icon-pencil icon-large"> Edit User</i></a>
+												<a rel="tooltip"  title="Edit staff" id="e<?php echo $id; ?>" href="edit_user.php<?php echo '?id='.$id; ?>"  data-toggle="modal" class="btn btn-info"><i class="icon-pencil icon-large"> Edit User</i></a>
 												</td>
 		
 									

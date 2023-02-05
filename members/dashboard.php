@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="St.Lukes Boys School management System">
-    <meta name="author" content="Kithinji Godfrey">
+    <meta name="description" content="students">
+    <meta name="author" content="Blaise">
     <link href="bootstrap/css/index_background.css" rel="stylesheet" media="screen" />
 
 </head>
@@ -44,7 +44,7 @@
                                 <div class="block-content collapse in">
                                     <div id="page-wrapper">
                                         <?php
-                                        $result = mysqli_query($conn, "select *, Sum(Amount) AS value_sum from tithe where na='$session_id' and status='paid' ");
+                                        $result = mysqli_query($conn, "select members.Residence,Sum(Amount) AS value_sum from tithe,members where tithe.parish=members.Residence and tithe.status='paid' and members.id='$session_id' and members.id=tithe.christian_username; ");
                                         $row = mysqli_fetch_assoc($result);
                                         $sum = $row['value_sum'];
 
@@ -75,7 +75,7 @@
                                                 </div>
                                             </div>
                                             <?php
-                                            $result1 = mysqli_query($conn, "select *, Sum(Amount) AS value_sum from offering where na='$session_id' and status='paid' ");
+                                            $result1 = mysqli_query($conn, "select members.Residence,Sum(Amount) AS value_sum from giving,members where giving.parish=members.Residence and giving.status='paid' and members.id='$session_id' and members.id=giving.christian_username; ");
                                             $row = mysqli_fetch_assoc($result1);
                                             $sum1 = $row['value_sum'];
 
@@ -108,14 +108,14 @@
                                     </div>
                                     <div id="page-wrapper">
                                         <?php
-                                        $result2 = mysqli_query($conn, "select *, Sum(Amount) AS value_sum from giving where na='$session_id' and status='paid' ");
+                                        $result2 = mysqli_query($conn, "select members.Residence,Sum(Amount) AS value_sum from offering,members where offering.parish=members.Residence and offering.status='paid' and members.id='$session_id' and members.id=offering.christian_username; ");
                                         $row = mysqli_fetch_assoc($result2);
                                         $sum2 = $row['value_sum'];
 
                                         ?>
                                         <div class="row-fluid">
                                             <div class="span6">
-                                                <div class="panel panel-yellow">
+                                                <div class="panel panel-warning">
                                                     <div class="panel-heading">
                                                         <div class="container-fluid">
                                                             <div class="row-fluid">
@@ -140,49 +140,14 @@
                                             </div>
 
                                             <?php
-                                            $count_members = mysqli_query($conn, "SELECT * 
-FROm  members
-WHERE  DATE_ADD(STR_TO_DATE(Birthday, '%Y-%m-%d'), INTERVAL YEAR(CURDATE())-YEAR(STR_TO_DATE(Birthday, '%Y-%m-%d')) YEAR) 
-            BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 7 DAY)");
-                                            $count = mysqli_num_rows($count_members);
-                                            ?>
-                                            <div class="span6">
-                                                <div class="panel panel-red">
-                                                    <div class="panel-heading">
-                                                        <div class="container-fluid">
-                                                            <div class="row-fluid">
-                                                                <div class="span3"><br />
-                                                                    <i class="fa fa-calendar  fa-5x"></i><br />
-                                                                </div>
-                                                                <div class="span8 text-right"><br />
-                                                                    <div class="huge"><?php echo $count; ?></div>
-                                                                    <div>Current & Upcoming Birthdays</div><br />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <a href="events.php">
-                                                        <div class="modal-footer">
-                                                            <span class="pull-left">View Details</span>
-                                                            <span class="pull-right"><i class="icon-chevron-right"></i></span>
-                                                            <div class="clearfix"></div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="page-wrapper">
-                                        <?php
                                         $count_members2 = mysqli_query($conn, "SELECT * 
-FROm  event
-WHERE  DATE_ADD(STR_TO_DATE(Date, '%Y-%m-%d'), INTERVAL YEAR(CURDATE())-YEAR(STR_TO_DATE(Date, '%Y-%m-%d')) YEAR) 
-            BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 7 DAY)");
+                                        FROm  event
+                                        WHERE  DATE_ADD(STR_TO_DATE(Date, '%Y-%m-%d'), INTERVAL YEAR(CURDATE())-YEAR(STR_TO_DATE(Date, '%Y-%m-%d')) YEAR) 
+                                                    BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 7 DAY)");
                                         $counts = mysqli_num_rows($count_members2);
                                         ?>
-                                        <div class="row-fluid">
                                             <div class="span6">
-                                                <div class="panel panel-green">
+                                            <div class="panel panel-info">
                                                     <div class="panel-heading">
                                                         <div class="container-fluid">
                                                             <div class="row-fluid">
@@ -205,17 +170,9 @@ WHERE  DATE_ADD(STR_TO_DATE(Date, '%Y-%m-%d'), INTERVAL YEAR(CURDATE())-YEAR(STR
                                                     </a>
                                                 </div>
                                             </div>
-
-                                            <?php
-                                            $count_members = mysqli_query($conn, "SELECT * 
-FROm  members
-WHERE  DATE_ADD(STR_TO_DATE(Birthday, '%Y-%m-%d'), INTERVAL YEAR(CURDATE())-YEAR(STR_TO_DATE(Birthday, '%Y-%m-%d')) YEAR) 
-            BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 7 DAY)");
-                                            $count = mysqli_num_rows($count_members);
-                                            ?>
-
                                         </div>
                                     </div>
+                                  
 
 
                                 </div>

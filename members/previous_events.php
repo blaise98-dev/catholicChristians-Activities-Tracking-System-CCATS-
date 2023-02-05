@@ -41,7 +41,7 @@
                         <div class="block-content collapse in">
                             <div class="span12">
                                 <form action="" method="post">
-                                    <table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
+                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-hover table-responsive table-bordered" id="example">
                                         <thead>
                                             <tr>
                                                 <th>TITLE</th>

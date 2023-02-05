@@ -20,14 +20,14 @@
                </div>	
 				
 				<?php	
-	             $count_user=mysqli_query($conn,"select * from admin where status = 1");
+	             $count_user=mysqli_query($conn,"select * from admin where status = 1 and role='diocese'");
 	             $count = mysqli_num_rows($count_user);
                  ?>	 
                         <div id="block_bg" class="block">
                             <div class="navbar navbar-inner block-header">
                                 <div class="muted pull-left"></i><i class="icon-user"></i> Subscriber (s) List</div>
 								<div class="muted pull-right">
-								Number of Subscribers: <span class="badge badge-info"><?php  echo $count; ?></span>
+								Number of dioceses: <span class="badge badge-info"><?php  echo $count; ?></span>
 							 </div>
                             </div>
                             <div class="block-content collapse in">
@@ -45,7 +45,7 @@
 										<thead>
 										  <tr>
 												<th>#</th>
-												<th>Name</th>
+												<th>Diocese representative</th>
 												<th>Username</th>
 										
 												<th>Action</th>
@@ -53,7 +53,7 @@
 										</thead>
 										<tbody>
 													<?php
-													$user_query = mysqli_query($conn,"select * from admin where status=1")or die(mysqli_error($conn));
+													$user_query = mysqli_query($conn,"select * from admin where status=1 and role='diocese'")or die(mysqli_error($conn));
 													while($row = mysqli_fetch_array($user_query)){
 													$id = $row['admin_id'];
 													?>
@@ -69,7 +69,7 @@
 												<?php include('toolttip_edit_delete.php'); ?>															
 												<td width="120">
 											
-												<a href="edit_user.php<?php echo '?id='.$id; ?>" class="btn btn-success"><i class="icon-pencil icon-large "></i>Edit user</a>
+												<a href="edit_user.php<?php echo '?id='.$id; ?>" class="btn btn-info"><i class="icon-pencil icon-large "></i>Edit user</a>
 
 											
 											</td>

@@ -67,7 +67,7 @@ alert('Data Already Exist');
 </script>
 <?php 
 }else{
-mysqli_query($conn,"insert into admin (username,password,firstname,lastname,adminthumbnails) values('$username','$password','$firstname','$lastname','images/NO-ImAGE-AVAILABLE.jpg')")or die(mysqli_error($conn));
+mysqli_query($conn,"insert into admin (username,password,role,firstname,lastname,adminthumbnails) values('$username','$password','diocese','$firstname','$lastname','images/NO-ImAGE-AVAILABLE.jpg')")or die(mysqli_error($conn));
 
 mysqli_query($conn,"insert into activity_log (date,username,action) values(NOW(),'$admin_username','Add Subscriber $firstname')")or die(mysqli_error($conn));
 ?>

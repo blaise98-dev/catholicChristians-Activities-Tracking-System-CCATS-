@@ -17,7 +17,7 @@
 		             </script> 
 					 <div id="sc" align="center"><image src="images/sclogo.png" width="45%" height="45%"/></div>
 				<?php	
-	             $count_student=mysqli_query($conn,"select * from giving");
+	             $count_student=mysqli_query($conn,"select * from members INNER JOIN giving ON members.id=giving.christian_username and giving.parish=members.Residence and giving.status='paid' and members.id='$session_id' and members.id=giving.christian_username;");
 	             $count = mysqli_num_rows($count_student);
                  ?>	 
 				   <div id="block_bg" class="block">
@@ -56,7 +56,7 @@
 <div class="block-content collapse in">
     <div class="span12">
 	<form action="" method="post">
-  	<table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
+  	<table cellpadding="0" cellspacing="0" border="0" class=" table table-striped table-hover table-responsive table-bordered" id="example">
 		<thead>		
 		        <tr>			        
                 	<th>member Name </th>
@@ -74,7 +74,7 @@
 <tbody>
 <!-----------------------------------Content------------------------------------>
 <?php
-		$student_query = mysqli_query($conn,"SELECT *FROm members  LEFT OUTER JOIN giving ON members.id = giving.na WHERE giving.givingid !='' ")or die(mysqli_error($conn));
+		$student_query = mysqli_query($conn,"select * from members INNER JOIN giving ON members.id=giving.christian_username and giving.parish=members.Residence and giving.status='paid' and members.id='$session_id' and members.id=giving.christian_username and giving.givingid !='' ")or die(mysqli_error($conn));
 		while($row = mysqli_fetch_array($student_query)){
 		$username = $row['givingid'];
 	

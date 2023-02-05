@@ -3190,7 +3190,7 @@ $.extend(Datepicker.prototype, {
 		}
 		this._attachments(input, inst);
 		input.addClass(this.markerClassName).keydown(this._doKeyDown).
-			keypress(this._doKeyPress).keyup(this._doKeyUp);
+			keypress(this._doKeyPress).keyup(this._dokeyup);
 		this._autoSize(inst);
 		$.data(target, PROP_NAME, inst);
 		//If disabled option is true, disable the datepicker once it has been attached to the input (see ticket #5665)
@@ -3368,7 +3368,7 @@ $.extend(Datepicker.prototype, {
 				unbind("focus", this._showDatepicker).
 				unbind("keydown", this._doKeyDown).
 				unbind("keypress", this._doKeyPress).
-				unbind("keyup", this._doKeyUp);
+				unbind("keyup", this._dokeyup);
 		} else if (nodeName === "div" || nodeName === "span") {
 			$target.removeClass(this.markerClassName).empty();
 		}
@@ -3669,7 +3669,7 @@ $.extend(Datepicker.prototype, {
 	},
 
 	/* Synchronise manual entry and field/alternate field. */
-	_doKeyUp: function(event) {
+	_dokeyup: function(event) {
 		var date,
 			inst = $.datepicker._getInst(event.target);
 

@@ -12,11 +12,30 @@
                  <input class="input focused" name="offeringdate" id="focusedInput" type="text" type="text" onfocus="(this.type='date')" placeholder="Date" required>
                </div>
              </div>
+             <div class="control-group">
+                      <div class="controls">
+                        <select class="input focused" name="christian_username" id="focusedInput" required>
+                                      <option value="" selected>Select username</option>
+
+                                      <?php
+                                      $sql = mysqli_query($conn, "select * from members,subparish,community,admin 
+                                      where members.community=community.id and members.subparish=subparish.id 
+                                      and members.residence='" . $_SESSION['id'] . "' group by christian_id");
+                                      while ($rows = mysqli_fetch_array($sql)) { ?>
+
+                                          <option value="<?php echo $rows['mobile']; ?>"><?php echo $rows['mobile']; ?></option>
+                                      <?php
+                                      }
+                                      ?>
+                                  </select>                     
+                       </div>
+                    </div>
+
 										<div class="control-group">
-                                          <div class="controls">
-                                            <input class="input focused" name="amount" id="focusedInput" type="number" placeholder = "Amount" required>
-                                          </div>
-                                        </div>
+                      <div class="controls">
+                        <input class="input focused" name="amount" id="focusedInput" type="number" placeholder = "Amount" required>
+                      </div>
+                    </div>
 									
 										<div class="control-group">
                                           <div class="controls">
@@ -48,6 +67,7 @@
 
 if (isset($_POST['save'])){
 $amount = $_POST['amount'];
+$christian_username=$_POST['christian_username'];
 $mobile = $_POST['mobile'];
   function GUID()
   {
@@ -59,7 +79,7 @@ $mobile = $_POST['mobile'];
 
 
 
-mysqli_query($conn,"insert into offering (Amount,Trcode,na,status,parish) values('$amount','$trcode','$mobile','pending','" . $_SESSION['id'] . "')")or die(mysqli_error($conn));
+mysqli_query($conn,"insert into offering (Amount,phone_used,Trcode,christian_username,status,parish) values('$amount','$mobile','$trcode','$christian_username','pending','" . $_SESSION['id'] . "')")or die(mysqli_error($conn));
 
 
   $data = array(

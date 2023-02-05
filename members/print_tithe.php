@@ -4,7 +4,6 @@
   <meta http-equiv=Content-Type content="text/html; charset=windows-1252">
   <meta name=Generator content="microsoft Word 14 (filtered)">
   <style>
-    <!--
     /* Font Definitions */
     @font-face {
       font-family: Calibri;
@@ -70,8 +69,14 @@
         display: none;
       }
     }
-    -->
   </style>
+  <style type="text/css" media="print">
+    @page 
+    {
+        size: auto;   /* auto is the initial value */
+        margin: 0mm;  /* this affects the margin in the printer settings */
+    }
+</style>
   <?php include('print_header.php'); ?>
   <?php include('session.php'); ?>
   <?php error_reporting(0) ?>
@@ -95,40 +100,26 @@
 
           <div class=WordSection1>
 
-            <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
-text-align:center;line-height:normal'><b><span style='font-size:14.0pt;
-font-family:"Times New Roman","serif"'><img width=100 height=20 id="Picture 1" src="print/logo.png"></span></b></p>
-
-            <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
-text-align:center;line-height:normal'><b><span style='font-size:12.0pt;
-font-family:"Times New Roman","serif"'>Church members</span></b></p>
-
-            <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
-text-align:center;line-height:normal'><b><span style='font-size:7.0pt;
-font-family:"Times New Roman","serif"'>Powered by Church manager <?php
-                                                                  $date = new DateTime();
-                                                                  echo $date->format('Y');
-                                                                  ?></span></b></p>
-
-            <p class=msoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-normal'><b><span style='font-size:10.0pt;font-family:"Times New Roman","serif"'>&nbsp;</span></b></p>
-
-            <div class="container">
+            <div class="container" style='padding:30px;'>
               <div class="container-fluid">
                 <div class="row-fluid">
                   <div class="pull-left">
-                    <p class=msoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
-"Times New Roman","serif"'>All members<o:p></o:p></span></p>
-
-                    <p class=msoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+                    <b class=msoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
 normal'><span style='font-size:10.0pt;mso-bidi-font-size:11.0pt;font-family:
 "Times New Roman","serif"'>DATE: <?php
                                   $date = new DateTime();
                                   echo $date->format('l, F jS, Y');
-                                  ?><o:p></o:p></span></p>
-
-                    <div class="pull-right">
+                                  ?><o:p></o:p></span></b>
+                                   <?php
+                        $student_query = mysqli_query($conn, "select members.fname, members.lname, admin.username,admin.firstname,admin.lastname,admin.adminthumbnails from members, admin where admin.admin_id=members.Residence and members.id='$session_id' ") or die(mysqli_error($conn));
+                       $rowdata = mysqli_fetch_array($student_query);
+                        ?>
+                                  <p class=msoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:20pt;mso-bidi-font-size:30pt;font-family:
+"Times New Roman","serif", text-align:center;'>Report of <b style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:20pt;mso-bidi-font-size:30pt;font-family:
+"Times New Roman","serif", text-align:center;'><?php echo $rowdata['fname'].' '.$rowdata['lname'];?></b> Tithing payments in <b><?php echo $rowdata['username'];?></b>Parish <o:p></o:p></span></p>
+<div class="pull-right">
                       <div class="empty">
                         <p class=msoNormal style='margin-bottom:0in; margin-left:-110px; margin-top:-30px; margin-bottom:.0001pt;line-height:
            normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
@@ -161,25 +152,20 @@ normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
                     <table class=msoTableGrid border=1 cellspacing=0 cellpadding=0 style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
  mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
                       <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:23.25pt'>
-                        <td width=188 style='width:140.9pt;border:solid windowtext 1.0pt;mso-border-alt:
-  solid windowtext .5pt;background:#BFBFBF;mso-background-themecolor:background1;
-  mso-background-themeshade:191;padding:0in 5.4pt 0in 5.4pt;height:23.25pt'>
-                          <p class=msoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif"'>First Name<o:p></o:p></span></b></p>
-                        </td>
-                        <td width=188 style='width:140.9pt;border:solid windowtext 1.0pt;border-left:
+                      
+                      <td width=188 style='width:9pt;border:solid windowtext 1.0pt;border-left:
   none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
   background:#BFBFBF;mso-background-themecolor:background1;mso-background-themeshade:
   191;padding:0in 5.4pt 0in 5.4pt;height:23.25pt'>
                           <p class=msoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif"'>Last Name<o:p></o:p></span></b></p>
+  normal'><b style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif"'>No<o:p></o:p></span></b></p>
                         </td>
-                        <td width=188 style='width:140.9pt;border:solid windowtext 1.0pt;border-left:
+                         <td width=188 style='width:140.9pt;border:solid windowtext 1.0pt;border-left:
   none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
   background:#BFBFBF;mso-background-themecolor:background1;mso-background-themeshade:
   191;padding:0in 5.4pt 0in 5.4pt;height:23.25pt'>
                           <p class=msoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif"'>Contacts<o:p></o:p></span></b></p>
+  normal'><b style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif"'>Payment phone (Mobile/Airtel money)<o:p></o:p></span></b></p>
                         </td>
                         <td width=188 style='width:140.9pt;border:solid windowtext 1.0pt;border-left:
   none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
@@ -193,7 +179,7 @@ normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
   background:#BFBFBF;mso-background-themecolor:background1;mso-background-themeshade:
   191;padding:0in 5.4pt 0in 5.4pt;height:23.25pt'>
                           <p class=msoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif"'>Traction Code<o:p></o:p></span></b></p>
+  normal'><b style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif"'>Transaction Code<o:p></o:p></span></b></p>
                         </td>
                         <td width=188 style='width:140.95pt;border:solid windowtext 1.0pt;border-left:
   none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
@@ -206,30 +192,22 @@ normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
 
                         <!-- mysqli FETCH ARRAY-->
                         <?php
-                        $student_query = mysqli_query($conn, "select * from members INNER JOIN tithe ON members.mobile=tithe.na where na='$session_id' ") or die(mysqli_error($conn));
+                        $student_query = mysqli_query($conn, "select * from members INNER JOIN tithe ON members.mobile=tithe.christian_username where christian_username='$session_id' and tithe.status='paid' ") or die(mysqli_error($conn));
+                        $i=0;
                         while ($row = mysqli_fetch_array($student_query)) {
                           $RegNo = $row['id'];
+                          $i++;
                         ?>
                       <tr style='mso-yfti-irow:1'>
                         <td width=188 valign=top style='width:140.9pt;border:solid windowtext 1.0pt;
   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 5.4pt 0in 5.4pt'>
-                          <p class=msoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-family:"Times New Roman","serif"'><?php echo $row['fname']; ?><o:p></o:p></span></p>
-                        </td>
+  padding:0in 5.4pt 0in 5.4pt'><?php echo $i;?></td>
                         <td width=188 valign=top style='width:140.9pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
                           <p class=msoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-family:"Times New Roman","serif"'><?php echo $row['lname']; ?><o:p></o:p></span></p>
-                        </td>
-                        <td width=188 valign=top style='width:140.9pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
-                          <p class=msoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-family:"Times New Roman","serif"'><?php echo $row['mobile']; ?><o:p></o:p></span></p>
+  normal'><span style='font-family:"Times New Roman","serif"'><?php echo $row['phone_used']; ?><o:p></o:p></span></p>
                         </td>
                         <td width=188 valign=top style='width:140.9pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -260,12 +238,12 @@ normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
 
 
                       <?php
-                        $student_query = mysqli_query($conn, "select sum(amount) as totaltithe from members INNER JOIN tithe ON members.mobile=tithe.na and tithe.na='$session_id' ") or die(mysqli_error($conn));
+                        $student_query = mysqli_query($conn, "select sum(amount) as totaltithe from members INNER JOIN tithe ON members.mobile=tithe.christian_username and tithe.christian_username='$session_id' and tithe.status='paid' ") or die(mysqli_error($conn));
                         while ($row = mysqli_fetch_array($student_query)) {
                           $RegNo = $row['id'];
                         ?>
                       <tr style='mso-yfti-irow:1; border:2px solid;'>
-                        <td colspan="3" width=188 valign=top style='width:140.9pt;border-top:none;border-left:
+                        <td colspan="2" width=188 valign=top style='width:140.9pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
@@ -305,19 +283,19 @@ normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
   height:17.85pt'>
                           <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
-  "Times New Roman","serif"'>Prepared by:<o:p></o:p></span></p>
-                        </td>
-                        <td width=376 valign=top style='width:281.85pt;padding:0in 5.4pt 0in 5.4pt;
-  height:17.85pt'>
-                          <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
   "Times New Roman","serif"'>Received by:<o:p></o:p></span></p>
                         </td>
                         <td width=376 valign=top style='width:281.85pt;padding:0in 5.4pt 0in 5.4pt;
   height:17.85pt'>
                           <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
-  "Times New Roman","serif"'>Check by:<o:p></o:p></span></p>
+  "Times New Roman","serif"'>Generated by:<o:p></o:p></span></p>
+                        </td>
+                        <td width=376 valign=top style='width:281.85pt;padding:0in 5.4pt 0in 5.4pt;
+  height:17.85pt'>
+                          <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
+  "Times New Roman","serif"'>Signed by:<o:p></o:p></span></p>
                         </td>
                       </tr>
 
@@ -330,27 +308,25 @@ normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
                           <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:center;line-height:normal'><b style='mso-bidi-font-weight:normal'><u><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman","serif"'><?php echo $row['fname'] . " " . $row['lname'];  ?><o:p></o:p></span></u></b></p>
                         </td>
-                        <td width=376 valign=top style='width:281.85pt;padding:0in 5.4pt 0in 5.4pt;
-  height:17.85pt'>
-                          <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
-  text-align:center;line-height:normal'><b style='mso-bidi-font-weight:normal'><u><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman","serif"'>_____________________<o:p></o:p></span></u></b></p>
+                        <td valign=top>
+                          <p class=msoNormal align=center><b><span><img width=20 height=5 id="Picture 1" src="../admin/<?php echo $rowdata['adminthumbnails'];?>"><o:p></o:p></span></b></p>
                         </td>
                         <td width=376 valign=top style='width:281.85pt;padding:0in 5.4pt 0in 5.4pt;
   height:17.85pt'>
                           <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
-  text-align:center;line-height:normal'><b style='mso-bidi-font-weight:normal'><u><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman","serif"'>_______________________<o:p></o:p></span></u></b></p>
+  text-align:center;line-height:normal'><b style='mso-bidi-font-weight:normal'><u><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman","serif"'> Fr. <?php echo $rowdata['firstname'] . " " . $rowdata['lastname'];  ?><o:p></o:p></span></u></b></p>
                         </td>
                       </tr>
                       <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes'>
                         <td width=376 valign=top style='width:281.8pt;padding:0in 5.4pt 0in 5.4pt'>
                           <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:center;line-height:normal'><span style='font-size:12.0pt;
-  mso-bidi-font-size:11.0pt;font-family:"Times New Roman","serif"'>System User<o:p></o:p></span></p>
+  mso-bidi-font-size:11.0pt;font-family:"Times New Roman","serif"'>Christian<o:p></o:p></span></p>
                         </td>
                         <td width=376 valign=top style='width:281.85pt;padding:0in 5.4pt 0in 5.4pt'>
                           <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:center;line-height:normal'><span style='font-size:12.0pt;
-  mso-bidi-font-size:11.0pt;font-family:"Times New Roman","serif"'>Associate Priest<o:p></o:p></span></p>
+  mso-bidi-font-size:11.0pt;font-family:"Times New Roman","serif"'><?php echo $rowdata['username'];?> Parish<o:p></o:p></span></p>
                         </td>
                         <td width=376 valign=top style='width:281.85pt;padding:0in 5.4pt 0in 5.4pt'>
                           <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;

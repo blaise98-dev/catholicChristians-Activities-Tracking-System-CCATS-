@@ -70,7 +70,6 @@
     div.WordSection1 {
       page: WordSection1;
     }
-    -->
   </style>
   <?php include('print_header.php'); ?>
   <?php include('session.php'); ?>
@@ -95,17 +94,17 @@
 
           <div class=WordSection1>
 
+          <?php $query = mysqli_query($conn, "select * from admin where admin_id = '$session_id'") or die(mysqli_error($conn));
+$rowprofile = mysqli_fetch_array($query);
+?>
             <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
 text-align:center;line-height:normal'><b><span style='font-size:14.0pt;
-font-family:"Times New Roman","serif"'><img width=100 height=20 id="Picture 1" src="images/churchicon.jpg"></span></b></p>
+font-family:"Times New Roman","serif"'><img width=100 height=20 id="Picture 1" src="<?php echo $rowprofile['adminthumbnails']; ?>"></span></b></p>
 
-            <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
-text-align:center;line-height:normal'><b><span style='font-size:12.0pt;
-font-family:"Times New Roman","serif"'>Church members</span></b></p>
 
             <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
 text-align:center;line-height:normal'><b><span style='font-size:7.0pt;
-font-family:"Times New Roman","serif"'>Powered by Church manager <?php
+font-family:"Times New Roman","serif"'>Powered by <b> <?php echo $_SESSION['username']?> parish</b> <?php
                                                                   $date = new DateTime();
                                                                   echo $date->format('Y');
                                                                   ?></span></b></p>
@@ -117,9 +116,6 @@ normal'><b><span style='font-size:10.0pt;font-family:"Times New Roman","serif"'>
               <div class="container-fluid">
                 <div class="row-fluid">
                   <div class="pull-left">
-                    <p class=msoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
-"Times New Roman","serif"'>All members<o:p></o:p></span></p>
 
                     <p class=msoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
 normal'><span style='font-size:10.0pt;mso-bidi-font-size:11.0pt;font-family:
@@ -127,12 +123,13 @@ normal'><span style='font-size:10.0pt;mso-bidi-font-size:11.0pt;font-family:
                                   $date = new DateTime();
                                   echo $date->format('l, F jS, Y');
                                   ?><o:p></o:p></span></p>
+                                  <h2>List of Christian tithes of <?php echo $_SESSION['username']?> parish</h2>
 
                     <div class="pull-right">
                       <div class="empty">
                         <p class=msoNormal style='margin-bottom:0in; margin-left:-110px; margin-top:-30px; margin-bottom:.0001pt;line-height:
-           normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
-           "Times New Roman","serif"'>
+                        normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
+                        "Times New Roman","serif"'>
                             <a href="#" onClick="window.print()" class="btn btn-info" id="print" data-placement="top" title="Click to Print"><i class="icon-print icon-large"></i> Print List</a></p>
                         <script type="text/javascript">
                           $(document).ready(function() {
@@ -193,7 +190,7 @@ normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
   background:#BFBFBF;mso-background-themecolor:background1;mso-background-themeshade:
   191;padding:0in 5.4pt 0in 5.4pt;height:23.25pt'>
                           <p class=msoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><b style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif"'>Traction Code<o:p></o:p></span></b></p>
+  normal'><b style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif"'>Transaction Code<o:p></o:p></span></b></p>
                         </td>
                         <td width=188 style='width:140.95pt;border:solid windowtext 1.0pt;border-left:
   none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
@@ -206,9 +203,9 @@ normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
 
                         <!-- mysqli FETCH ARRAY-->
                         <?php
-                        // $student_query = mysqli_query($conn, "select * from members INNER JOIN tithe ON members.mobile=tithe.na ") or die(mysqli_error());
+                        // $student_query = mysqli_query($conn, "select * from members INNER JOIN tithe ON members.mobile=tithe.christian_username ") or die(mysqli_error());
 
-                        $student_query = mysqli_query($conn, "select * from members,tithe WHERE members.id=tithe.na and tithe.status='paid'and members.Residence='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
+                        $student_query = mysqli_query($conn, "select * from members,tithe WHERE members.id=tithe.christian_username and tithe.status='paid'and members.Residence='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
                         while ($row = mysqli_fetch_array($student_query)) {
                           $RegNo = $row['id'];
                         ?>
@@ -261,7 +258,7 @@ normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
                       </tr>
 
                       <?php
-                        $student_query = mysqli_query($conn, "select sum(tithe.amount) as totaltithe from members,tithe WHERE members.id=tithe.na and tithe.status='paid' and tithe.parish='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
+                        $student_query = mysqli_query($conn, "select sum(tithe.amount) as totaltithe from members,tithe WHERE members.id=tithe.christian_username and tithe.status='paid' and tithe.parish='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
                         while ($row = mysqli_fetch_array($student_query)) {
                           $RegNo = $row['id'];
                         ?>
@@ -317,7 +314,7 @@ normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
   height:17.85pt'>
                           <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
-  "Times New Roman","serif"'>Check by:<o:p></o:p></span></p>
+  "Times New Roman","serif"'>Checked by:<o:p></o:p></span></p>
                         </td>
                       </tr>
 
@@ -345,12 +342,12 @@ normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
                         <td width=376 valign=top style='width:281.8pt;padding:0in 5.4pt 0in 5.4pt'>
                           <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:center;line-height:normal'><span style='font-size:12.0pt;
-  mso-bidi-font-size:11.0pt;font-family:"Times New Roman","serif"'>System Administrator<o:p></o:p></span></p>
+  mso-bidi-font-size:11.0pt;font-family:"Times New Roman","serif"'>Associate Priest <o:p></o:p></span></p>
                         </td>
                         <td width=376 valign=top style='width:281.85pt;padding:0in 5.4pt 0in 5.4pt'>
                           <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:center;line-height:normal'><span style='font-size:12.0pt;
-  mso-bidi-font-size:11.0pt;font-family:"Times New Roman","serif"'>Associate Priest<o:p></o:p></span></p>
+  mso-bidi-font-size:11.0pt;font-family:"Times New Roman","serif"'>User<o:p></o:p></span></p>
                         </td>
                         <td width=376 valign=top style='width:281.85pt;padding:0in 5.4pt 0in 5.4pt'>
                           <p class=msoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;

@@ -206,7 +206,7 @@ normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
 
                         <!-- mysqli FETCH ARRAY-->
                         <?php
-                        $student_query = mysqli_query($conn, "select * from members,offering WHERE members.id=offering.na and offering.status='paid'and members.Residence='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
+                        $student_query = mysqli_query($conn, "select * from members,offering WHERE members.id=offering.christian_username and offering.status='paid'and members.Residence='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
                         while ($row = mysqli_fetch_array($student_query)) {
                           $RegNo = $row['id'];
                         ?>
@@ -259,7 +259,7 @@ normal'><span style='font-size:12.0pt;mso-bidi-font-size:11.0pt;font-family:
                       </tr>
 
                       <?php
-                        $student_query = mysqli_query($conn, "select sum(offering.amount) as totaloffering from members,offering WHERE members.id=offering.na and offering.status='paid' and offering.parish='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
+                        $student_query = mysqli_query($conn, "select sum(offering.amount) as totaloffering from members,offering WHERE members.id=offering.christian_username and offering.status='paid' and offering.parish='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
                         while ($row = mysqli_fetch_array($student_query)) {
                           $RegNo = $row['id'];
                         ?>

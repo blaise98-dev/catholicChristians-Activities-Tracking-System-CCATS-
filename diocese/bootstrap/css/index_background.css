@@ -1,0 +1,13 @@
+.body {
+	background: url(../../images/back2.avif)no-repeat center center fixed;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: #464646;
+}
+
+.setfooter {
+	float: none;
+	padding-left: 150px;
+}

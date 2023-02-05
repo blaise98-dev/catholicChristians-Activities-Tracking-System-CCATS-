@@ -12,7 +12,7 @@
 			<?php
 			$count_members = mysqli_query($conn, "select * from members,subparish,community,admin 
 											where members.community=community.id and members.subparish=subparish.id 
-											and members.residence='" . $_SESSION['id'] . "' group by keyu");
+											and members.residence='" . $_SESSION['id'] . "' group by christian_id");
 			$count = mysqli_num_rows($count_members);
 			?>
 			<div class="span6" id="">
@@ -58,14 +58,15 @@
 											<?php
 											$members_query = mysqli_query($conn, "select * from members,subparish,community,admin 
 											where members.community=community.id and members.subparish=subparish.id 
-											and members.residence='" . $_SESSION['id'] . "' group by keyu") or die(mysqli_error($conn));
+											and members.residence='" . $_SESSION['id'] . "' group by christian_id") or die(mysqli_error($conn));
 											while ($row = mysqli_fetch_array($members_query)) {
-												$id = $row['keyu'];
+												$id = $row['christian_id'];
 											?>
 
 												<tr>
 													<td width="30">
-														<input id="optionsCheckbox" class="uniform_on" name="selector[]" type="checkbox" value="<?php echo $id; ?>">
+													<input id="optionsCheckbox" name="selector[]" type="checkbox" value="<?php echo $id; ?>">
+
 													</td>
 													<td><?php echo $row['fname'] . "   " . $row['sname']. "  ". $row['lname']; ?></td>
 

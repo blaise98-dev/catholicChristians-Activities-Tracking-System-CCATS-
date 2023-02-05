@@ -36,7 +36,7 @@
                         <div class="block-content collapse in">
                             <div class="span12">
                                 <form action="" method="post">
-                                    <table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
+                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-hover table-responsive table-bordered" id="example">
                                         <thead>
                                             <tr>
                                                 <th>member Name </th>
@@ -54,7 +54,7 @@
                                         <tbody>
                                             <!-----------------------------------Content------------------------------------>
                                             <?php
-                                            $student_query = mysqli_query($conn, "SELECT *FROm members  LEFT OUTER JOIN tithe ON members.id = tithe.na WHERE tithe.titheid !='' and tithe.status='pending' ") or die(mysqli_error($conn));
+                                            $student_query = mysqli_query($conn, "SELECT *FROm members  LEFT OUTER JOIN tithe ON members.id = tithe.christian_username WHERE tithe.titheid !='' and tithe.status='pending' ") or die(mysqli_error($conn));
                                             while ($row = mysqli_fetch_array($student_query)) {
                                                 $username = $row['titheid'];
 

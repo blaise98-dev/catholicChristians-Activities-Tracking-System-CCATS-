@@ -20,6 +20,11 @@
              </div>
              <div class="control-group">
                <div class="controls">
+                 <input class="input focused" name="phone_used" id="focusedInput" type="text" placeholder="Phone (mobile money/airtel money)" required>
+               </div>
+             </div>
+             <div class="control-group">
+               <div class="controls">
                  <button name="save" class="btn btn-info" id="save" data-placement="right" title="Click to Save"><i class="icon-plus-sign icon-large"> Save</i></button>
                  <script type="text/javascript">
                    $(document).ready(function() {
@@ -40,6 +45,7 @@
 
     if (isset($_POST['save'])) {
       $amount = $_POST['amount'];
+      $phone_used=$_POST['phone_used'];
       $year = $_POST['year'];
 
     function GUID()
@@ -47,10 +53,10 @@
       return strtoupper(bin2hex(openssl_random_pseudo_bytes(8)));
     }
     $trcode = GUID();
-      mysqli_query($conn, "insert into offering (Amount,year,Trcode,na,parish) values('$amount','$year','$trcode','$session_id','". $_SESSION['parish']."')") or die(mysqli_error($conn));
+      mysqli_query($conn, "insert into offering (Amount,phone_used,year,Trcode,christian_username,parish) values('$amount','$phone_used','$year','$trcode','$session_id','". $_SESSION['parish']."')") or die(mysqli_error($conn));
 
       $data = array(
-      "telephoneNumber" => '25'.$session_id,
+      "telephoneNumber" => '25'.$phone_used,
       "amount" =>  $amount,
       "organizationId" => 'e8f3a6da-dda2-429f-8cfb-935fc996a7f5',
       "description" => 'Payment for offering',

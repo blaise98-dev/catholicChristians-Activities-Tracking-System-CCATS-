@@ -64,7 +64,7 @@ $lastname = $_POST['lastname'];
 $username = $_POST['username'];
 
 
-mysqli_query($conn,"update admin set username = '$username'  , firstname = '$firstname' , lastname = '$lastname' where admin_id = '$get_id' ")or die(mysqli_error($conn));
+mysqli_query($conn,"update admin set username = '$username'  , firstname = '$firstname' , lastname = '$lastname' where admin_id = '$get_id' and role='diocese' ")or die(mysqli_error($conn));
 mysqli_query($conn,"insert into activity_log (date,username,action) values(NOW(),'$admin_username','Edit system User $firstname')")or die(mysqli_error($conn));	
 ?>
 <script>

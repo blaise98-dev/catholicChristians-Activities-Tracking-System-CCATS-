@@ -21,7 +21,7 @@
         <div class="row-fluid">
             <div class="span9" id="content">
                 <div class="row-fluid">
-                    <?php $query = mysqli_query($conn, "select * from admin where admin_id = '" . $_SESSION['id'] . "'") or die(mysqli_error($conn));
+                    <?php $query = mysqli_query($conn, "select * from admin where admin_id = '" . $_SESSION['id'] . "' and role='diocese' and status=1") or die(mysqli_error($conn));
                     $row = mysqli_fetch_array($query);
                     ?>
                     <div class="col-lg-12">
@@ -44,7 +44,7 @@
                                 <div class="block-content collapse in">
                                     <div id="page-wrapper">
                                         <?php
-                                        $student = mysqli_query($conn, "select * from admin where  admin.admin_id !='" . $_SESSION['id'] . "' ") or die(mysqli_error($conn));
+                                        $student = mysqli_query($conn, "select * from admin where  admin.admin_id !='" . $_SESSION['id'] . "'and role='diocese' and status=1 ") or die(mysqli_error($conn));
                                         $student = mysqli_num_rows($student);
                                         ?>
                                         <div class="row-fluid">
@@ -58,7 +58,7 @@
                                                                 </div>
                                                                 <div class="span8 text-right"><br />
                                                                     <div class="huge"><?php echo $student; ?></div>
-                                                                    <div>All parishes</div><br />
+                                                                    <div>All Dioceses</div><br />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -89,14 +89,14 @@ WHERE  DATE_SUB(STR_TO_DATE(date, '%Y-%m-%d'), INTERVAL YEAR(CURDATE())-YEAR(STR
                                                                 </div>
                                                                 <div class="span8 text-right"><br />
                                                                     <div class="huge"><?php echo $new; ?></div>
-                                                                    <div>New Parish</div><br />
+                                                                    <div>New Diocese</div><br />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <a href="admin_user.php">
                                                         <div class="modal-footer">
-                                                            <span class="pull-left">Add parish</span>
+                                                            <span class="pull-left">Add Diocese</span>
                                                             <span class="pull-right"><i class="icon-chevron-right"></i></span>
                                                             <div class="clearfix"></div>
                                                         </div>
